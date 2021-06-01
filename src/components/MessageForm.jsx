@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 function MessageForm() {
@@ -9,7 +10,14 @@ function MessageForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(content);
+    axios
+      .post('http://localhost:8000/messages', {
+        // eslint-disable-next-line object-shorthand
+        content: content,
+      })
+      .then((response) => {
+        alert(JSON.stringify(response.data));
+      });
   };
 
   return (
