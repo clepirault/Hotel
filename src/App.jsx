@@ -1,9 +1,11 @@
-import RemoveMe from './components/RemoveMe';
+import MessageForm from './components/MessageForm';
+import MessageList from './components/MessageList';
 
 function App() {
   return (
     <div className="App">
-      <RemoveMe />
+      <MessageList />
+      <MessageForm />
     </div>
   );
 }
