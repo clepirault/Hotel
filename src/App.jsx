@@ -1,11 +1,9 @@
-import MessageForm from './components/MessageForm';
-import MessageList from './components/MessageList';
+import MainRouter from './components/router/MainRouter';
 
 function App() {
   return (
     <div className="App">
-      <MessageList />
-      <MessageForm />
+      <MainRouter />
     </div>
   );
 }

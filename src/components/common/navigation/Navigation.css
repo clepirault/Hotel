@@ -1,0 +1,17 @@
+.navigation {
+  color: white;
+  font-size: 3em;
+}
+.navigation ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding-top: 1em;
+}
+.navigation a {
+  color: inherit;
+  text-decoration: none;
+}
+.navigation a:hover {
+  color: #f9d976;
+}
