@@ -1,0 +1,12 @@
+.hotel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.hotel img {
+  width: 40%;
+}
+.hotel p {
+  width: 40%;
+  text-align: justify;
+}

@@ -1,4 +1,7 @@
 .mainTitle {
   display: flex;
   justify-content: center;
+  height: 5em;
+  align-items: center;
+  font-size: 3em;
 }
