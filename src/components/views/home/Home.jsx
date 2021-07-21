@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MainTilte from '../../common/title/MainTilte';
-import Title from '../../common/title/Title';
 import ContactButton from '../../common/button/ContactButton';
-/* import images from '../../../images'; */
 import './Home.css';
 import Slideshow from '../../common/slideshow/Slideshow';
+import Title from '../../common/title/Title';
+import RoomButton from '../../common/button/RoomButton';
+import SecondaryTilte from '../../common/title/SecondaryTitle';
 
 function Home() {
   return (
@@ -25,8 +26,30 @@ function Home() {
           dicta? Odit accusantium sequi corrupti vitae nisi hic.
         </p>
       </div>
-      <Title>Découvrir nos chambres</Title>
-      <Title>Découvrir nos services</Title>
+      <div className="roomSection">
+        <Title>Découvrir nos chambres</Title>
+        <div className="rooms">
+          <div className="economy">
+            <SecondaryTilte>Economy</SecondaryTilte>
+            <RoomButton>
+              <Link to="/rooms">Découvrir</Link>
+            </RoomButton>
+          </div>
+          <div className="premium">
+            <SecondaryTilte>Premium</SecondaryTilte>
+            <RoomButton>
+              <Link to="/rooms">Découvrir</Link>
+            </RoomButton>
+          </div>
+          <div className="suite">
+            <SecondaryTilte>Suites</SecondaryTilte>
+            <RoomButton>
+              <Link to="/rooms">Découvrir</Link>
+            </RoomButton>
+          </div>
+        </div>
+      </div>
+      {/* <Title>Découvrir nos services</Title> */}
       <ContactButton title=" ">
         <Link to="/contact">Nous contacter</Link>
       </ContactButton>
