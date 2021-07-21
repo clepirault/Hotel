@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MainTilte from '../../common/title/MainTilte';
 import Title from '../../common/title/Title';
+import ContactButton from '../../common/button/ContactButton';
 import images from '../../../images';
 import './Home.css';
 
@@ -22,6 +24,9 @@ function Home() {
       </div>
       <Title>Découvrir nos chambres</Title>
       <Title>Découvrir nos services</Title>
+      <ContactButton title=" ">
+        <Link to="/contact">Nous contacter</Link>
+      </ContactButton>
     </div>
   );
 }

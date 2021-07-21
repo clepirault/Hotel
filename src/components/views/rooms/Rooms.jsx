@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import RoomDetail from '../../common/rooms/RoomDetail';
+import ContactButton from '../../common/button/ContactButton';
 import './Rooms.css';
 
 function Rooms() {
@@ -22,6 +24,9 @@ function Rooms() {
           <RoomDetail {...element} />
         ))}
       </div>
+      <ContactButton title="Vous avez une demande spécifique">
+        <Link to="/contact">Nous contacter</Link>
+      </ContactButton>
     </div>
   );
 }

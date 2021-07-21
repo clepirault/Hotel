@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 
 function RoomSelected(props) {
+  const alert = useAlert();
   const [displayMeals, setDisplayMeals] = useState([]);
   useEffect(() => {
     axios
@@ -23,7 +25,7 @@ function RoomSelected(props) {
   const [displaySummary, setDisplaySummary] = useState(true);
   const handleDisplaySummary = () => {
     if (!selectedNights) {
-      alert('Tous les champs ne sont pas remplis');
+      alert.show('Tous les champs ne sont pas remplis');
     } else {
       setDisplaySummary(!displaySummary);
     }
