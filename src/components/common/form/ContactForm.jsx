@@ -20,7 +20,8 @@ function ContactForm() {
         <label htmlFor="request">
           Votre demande concerne
           <select name="request" id="request">
-            <option value="about">Une demande de renseignements</option>
+            <option value="none">--</option>
+            <option value="about">Des informations sur l&apos;hôtel</option>
             <option value="booking">Une réservation en cours</option>
             <option value="claim">Une réclamation</option>
           </select>

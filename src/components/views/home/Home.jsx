@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import MainTilte from '../../common/title/MainTilte';
 import Title from '../../common/title/Title';
 import ContactButton from '../../common/button/ContactButton';
-import images from '../../../images';
+/* import images from '../../../images'; */
 import './Home.css';
+import Slideshow from '../../common/slideshow/Slideshow';
 
 function Home() {
   return (
     <div>
       <MainTilte>Bienvenue à l&apos;hôtel</MainTilte>
       <div className="hotel">
-        <img src={images.indoor} alt="hero" />
+        <div className="carousel">
+          <Slideshow />
+        </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam sapiente
           doloremque repudiandae perferendis maiores id, sequi modi rerum, ex
