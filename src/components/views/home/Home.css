@@ -53,3 +53,34 @@
 .suite {
   background-image: url('https://live.staticflickr.com/3895/15337019451_3f6919b6d7_c.jpg');
 }
+
+@media screen and (max-width: 767px) {
+  .hotel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 800px;
+  }
+  .hotel p {
+    width: 80%;
+    text-align: justify;
+    margin-bottom: 10em;
+  }
+  .carousel {
+    width: 100%;
+    height: 20em;
+  }
+  .rooms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .economy, .premium, .suite {
+    width: 80%;
+    height: 100%;
+    margin-bottom: 1em;
+  }
+  .suite{
+    margin-bottom: 10em;
+  }
+}

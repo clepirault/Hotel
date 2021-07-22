@@ -50,3 +50,9 @@
 .contactFormButton {
   width: 5em;
 }
+
+@media screen and (max-width: 767px) {
+  .contactForm {
+    width: 90vw;
+  }
+}

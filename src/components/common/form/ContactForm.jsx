@@ -2,7 +2,6 @@ import React from 'react';
 import { useAlert } from 'react-alert';
 import Tilte from '../title/Title';
 import './ContactForm.css';
-/* import PropTypes from 'prop-types'; */
 
 function ContactForm() {
   const alert = useAlert();
@@ -11,7 +10,7 @@ function ContactForm() {
   };
   return (
     <div className="contactFormSection">
-      <form className="contactForm" action="submit">
+      <form className="contactForm">
         <Tilte>Contactez-nous</Tilte>
         <div className="contactFormInput">
           <input type="text" placeholder="Votre nom" />
@@ -43,9 +42,5 @@ function ContactForm() {
     </div>
   );
 }
-
-/* ContactForm.propTypes = {
-
-} */
 
 export default ContactForm;
