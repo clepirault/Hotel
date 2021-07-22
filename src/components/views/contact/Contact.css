@@ -1,3 +1,14 @@
+
 .contactInfo {
   display: flex;
+  margin: auto;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 4em;
+}
+
+.contactInfo p {
+  padding-left: 10vw;
+  padding-right: 10vw;
+  text-align: justify;
 }

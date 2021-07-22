@@ -1,17 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../views/rooms/Rooms.css';
+import Title from '../title/Title';
+import ContactButton from '../button/ContactButton';
 
 function RoomDetail(props) {
-  const { name, capacity, price } = props;
+  const { name, capacity, price, image } = props;
   return (
-    <div>
-      <h3>{name}</h3>
-      <p>Pour {capacity} personnes</p>
-      <p>Prix par nuit : {price}€ </p>
-      <button type="button">
-        <Link to={`/rooms/${name}`}>Réserver</Link>
-      </button>
+    <div className="roomsSection">
+      <div className="roomsSectionTitle">
+        <Title>{name}</Title>
+      </div>
+      <div className="roomDetail">
+        <img src={image} alt="roomImage" className="roomImage" />
+        <div className="roomInfo">
+          <span>Pour {capacity} personnes</span>
+          <span>Prix par nuit : {price}€ </span>
+          <ContactButton title=" ">
+            <Link to={`/rooms/${name}`}>Réserver</Link>
+          </ContactButton>
+        </div>
+      </div>
     </div>
   );
 }

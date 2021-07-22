@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useAlert } from 'react-alert';
+/* import { useAlert } from 'react-alert'; */
 import { Link } from 'react-router-dom';
+import Title from '../title/Title';
 
 function RoomSelected(props) {
-  const alert = useAlert();
+  /* const alert = useAlert(); */
+  /* we get and store meals */
   const [displayMeals, setDisplayMeals] = useState([]);
   useEffect(() => {
     axios
@@ -14,28 +16,39 @@ function RoomSelected(props) {
         setDisplayMeals(data);
       });
   }, []);
+  // eslint-disable-next-line react/destructuring-assignment
+  const { name } = props.match.params;
+  /* we get and store the room selected */
+  const [roomByName, setRoomByName] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/rooms/${name}`)
+      .then((res) => res.data)
+      .then((data) => {
+        setRoomByName(data[0]);
+      });
+  }, []);
   const [selectedMeals, setSelectedMeals] = useState('petit déjeuner');
   const handleSelectedMeals = (e) => {
     setSelectedMeals(e.target.value);
   };
-  const [selectedNights, setSelectedNights] = useState('');
+  /* const [selectedNights, setSelectedNights] = useState('');
   const handleSelectedNights = (e) => {
     setSelectedNights(e.target.value);
-  };
-  const [displaySummary, setDisplaySummary] = useState(true);
+  }; */
+  /* const [displaySummary, setDisplaySummary] = useState(true);
   const handleDisplaySummary = () => {
     if (!selectedNights) {
       alert.show('Tous les champs ne sont pas remplis');
     } else {
       setDisplaySummary(!displaySummary);
     }
-  };
-  // eslint-disable-next-line react/destructuring-assignment
-  const { name } = props.match.params;
+  }; */
+
   return (
     <div>
       <Link to="/rooms">Retour</Link>
-      <h2>{name}</h2>
+      <Title>Vous avez sélectionné la chambre {roomByName.name}</Title>
       <form>
         <label htmlFor="meals">
           Choisir vos options
@@ -50,19 +63,16 @@ function RoomSelected(props) {
             ))}
           </select>
         </label>
-        <br />
-        <label htmlFor="nb_nights">
-          Nombre de nuits
-          <input
-            type="text"
-            id="nb_night"
-            value={selectedNights}
-            onChange={handleSelectedNights}
-          />
+        <label htmlFor="checkin">
+          <input type="date" name="checkin" id="checkin" />
         </label>
-        <br />
+        <label htmlFor="checkout">
+          <input type="date" name="checkout" id="checkout" />
+        </label>
+        {/* value={selectedNights}
+        onChange={handleSelectedNights} */}
       </form>
-      <button type="button" onClick={handleDisplaySummary}>
+      {/* <button type="button" onClick={handleDisplaySummary}>
         Valider
       </button>
       {displaySummary || (
@@ -73,7 +83,7 @@ function RoomSelected(props) {
           <p>Pour {selectedNights} nuits</p>
           <button type="button">Poursuivre</button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

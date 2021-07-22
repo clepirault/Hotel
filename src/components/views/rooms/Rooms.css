@@ -1,0 +1,35 @@
+.roomsSection {
+  width: 90vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4em;
+}
+
+.roomsSectionMainTitle {
+  display: flex;
+  padding-left: 5em;
+  font-size: 2.5em;
+}
+
+.roomsSectionTitle {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.roomDetail {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.roomImage {
+  width: 30vw;
+}
+
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

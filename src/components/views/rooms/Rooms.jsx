@@ -1,27 +1,21 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RoomDetail from '../../common/rooms/RoomDetail';
 import ContactButton from '../../common/button/ContactButton';
 import './Rooms.css';
+import Tilte from '../../common/title/Title';
+import { RoomContext } from '../../context/roomsContext';
 
 function Rooms() {
-  const [rooms, setRooms] = useState([]);
-  useEffect(() => {
-    axios
-      .get('http://localhost:8000/rooms')
-      .then((res) => res.data)
-      .then((data) => {
-        setRooms(data);
-      });
-    /* .catch((err)=>console.error(error)); */
-  }, []);
+  const { room } = useContext(RoomContext);
   return (
     <div>
-      <h2>Chambres</h2>
+      <div className="roomsSectionMainTitle">
+        <Tilte>Nos chambres</Tilte>
+      </div>
       <div className="roomList">
-        {rooms.map((element) => (
-          <RoomDetail {...element} />
+        {room.map((element) => (
+          <RoomDetail key={element.id} {...element} />
         ))}
       </div>
       <ContactButton title="Vous avez une demande spécifique">

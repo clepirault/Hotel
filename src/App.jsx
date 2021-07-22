@@ -1,9 +1,12 @@
 import MainRouter from './components/router/MainRouter';
+import RoomProvider from './components/context/roomsContext';
 
 function App() {
   return (
     <div className="App">
-      <MainRouter />
+      <RoomProvider>
+        <MainRouter />
+      </RoomProvider>
     </div>
   );
 }

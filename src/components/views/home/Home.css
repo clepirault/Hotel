@@ -20,6 +20,9 @@
   height: 55vh;
   justify-content: space-around;
 }
+.roomTitle {
+  padding-left: 4em;
+}
 .rooms {
   display: flex;
   justify-content: space-around;

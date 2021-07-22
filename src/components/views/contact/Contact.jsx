@@ -6,8 +6,12 @@ import Map from '../../common/Map';
 
 function Contact() {
   return (
-    <div>
-      <Title>Venir à l&apos;hôtel</Title>
+    <div className="contact">
+      <div
+        style={{ textAlign: 'center', paddingTop: '3em', paddingBottom: '3em' }}
+      >
+        <Title>Venir à l&apos;hôtel</Title>
+      </div>
       <div className="contactInfo">
         <Map />
         <p>

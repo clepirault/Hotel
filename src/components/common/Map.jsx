@@ -8,7 +8,7 @@ function Map() {
       center={[47.869577, 0.315104]}
       zoom={15}
       scrollWheelZoom={false}
-      style={{ width: '40vw', height: '300px' }}
+      style={{ width: '100%', height: '300px' }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
