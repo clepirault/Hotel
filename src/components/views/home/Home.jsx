@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React /* , { useContext } */ from 'react';
 import { Link } from 'react-router-dom';
 import MainTilte from '../../common/title/MainTilte';
 import ContactButton from '../../common/button/ContactButton';
@@ -7,10 +7,10 @@ import Slideshow from '../../common/slideshow/Slideshow';
 import Title from '../../common/title/Title';
 import SecondaryTitle from '../../common/title/SecondaryTitle';
 import RoomButton from '../../common/button/RoomButton';
-import { RoomContext } from '../../context/roomsContext';
+/* import { RoomContext } from '../../context/roomsContext'; */
 
 function Home() {
-  const { room } = useContext(RoomContext);
+  /* const { room } = useContext(RoomContext); */
   return (
     <div>
       <MainTilte>Bienvenue à l&apos;hôtel</MainTilte>
@@ -34,19 +34,19 @@ function Home() {
         </div>
         <div className="rooms">
           <div className="economy">
-            <SecondaryTitle>{room[0].name}</SecondaryTitle>
+            <SecondaryTitle>{/* {room[0].name} */}Economy</SecondaryTitle>
             <RoomButton>
               <Link to="/rooms">Découvrir</Link>
             </RoomButton>
           </div>
           <div className="premium">
-            <SecondaryTitle>{room[1].name}</SecondaryTitle>
+            <SecondaryTitle>{/* {room[1].name} */}Premium</SecondaryTitle>
             <RoomButton>
               <Link to="/rooms">Découvrir</Link>
             </RoomButton>
           </div>
           <div className="suite">
-            <SecondaryTitle>{room[2].name}</SecondaryTitle>
+            <SecondaryTitle>{/* {room[2].name} */}Suite</SecondaryTitle>
             <RoomButton>
               <Link to="/rooms">Découvrir</Link>
             </RoomButton>
