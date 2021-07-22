@@ -5,3 +5,7 @@
   padding: 0;
   font-family: 'Lato', sans-serif;
 }
+
+.admin {
+  height: 60vh;
+}

@@ -1,21 +1,24 @@
 .roomsSection {
-  width: 90vw;
+  width: 80vw;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 4em;
+  background-color: rgba(249, 217, 118, 0.3);
+  border-radius: 1em;
 }
 
 .roomsSectionMainTitle {
   display: flex;
   padding-left: 5em;
   font-size: 2.5em;
+  margin-bottom: 3em;
 }
 
 .roomsSectionTitle {
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding-top: 1.5em;
+  padding-bottom: 3em;
 }
 
 .roomDetail {
@@ -32,4 +35,66 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* ROOM SELECTED FILE */
+.toRoomsLink {
+  align-self: flex-start;
+  text-decoration: none;
+  color: inherit;
+}
+.toRoomsLink:hover {
+  color: #d2ccc4;
+}
+.roomSelectedSection{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  background-color: rgba(249, 217, 118, 0.3);
+  padding: 1.5em;
+}
+
+.booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4em;
+}
+
+.booking label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.booking input {
+  margin-bottom: 1em;
+}
+
+.textarea {
+  width: 20em;
+  height: 7em;
+}
+
+.bookingButton {
+  width: 10em;
 }

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import Title from '../title/Title';
+import '../../views/rooms/Rooms.css';
 
 function RoomSelected(props) {
   const alert = useAlert();
@@ -73,7 +74,7 @@ function RoomSelected(props) {
   const [displaySummary, setDisplaySummary] = useState(true);
   const handleDisplaySummary = () => {
     if (!checkin && !checkout) {
-      alert.show('Tous les champs ne sont pas remplis');
+      alert.show('Merci de compléter tous les champs');
     } else {
       setDisplaySummary(!displaySummary);
     }
@@ -97,12 +98,51 @@ function RoomSelected(props) {
       .post('http://localhost:8000/booking', newBooking)
       .then(() => alert.show('Merci pour votre réservation'));
   };
+  const convertPrice = (value) => {
+    let text = '';
+    if (value === 0) {
+      text = 'inclus';
+    } else {
+      text = `${value}€/jour`;
+    }
+    return text;
+  };
+
+  const mealPrice = (value) => {
+    let price = '';
+    if (value === 'petit déjeuner') {
+      price = 0;
+    } else if (value === 'demi pension') {
+      price = 15;
+    } else if (value === 'pension complète') {
+      price = 35;
+    }
+    return price;
+  };
+
+  const roomPrice = (value) => {
+    let price = '';
+    if (value === 'Economy') {
+      price = 80;
+    } else if (value === 'Premium') {
+      price = 100;
+    } else if (value === 'Suite') {
+      price = 200;
+    }
+    return price;
+  };
+
+  const totalPrice = (meal, room) => {
+    return meal + room;
+  };
 
   return (
-    <div>
-      <Link to="/rooms">Retour</Link>
+    <div className="roomSelectedSection">
+      <Link to="/rooms" className="toRoomsLink">
+        Retour
+      </Link>
       <Title>Vous avez sélectionné la chambre {roomByName.name}</Title>
-      <form>
+      <form className="form">
         <label htmlFor="meals">
           Choisir vos options
           <select
@@ -112,11 +152,14 @@ function RoomSelected(props) {
             onChange={handleSelectedMeals}
           >
             {displayMeals.map((element) => (
-              <option value={element.type}>{element.type}</option>
+              <option key={element.id} value={element.type}>
+                {element.type} ({convertPrice(element.price)})
+              </option>
             ))}
           </select>
         </label>
         <label htmlFor="checkin">
+          <span>Date d&apos;arrivée souhaitée</span>
           <input
             type="date"
             name="checkin"
@@ -126,6 +169,7 @@ function RoomSelected(props) {
           />
         </label>
         <label htmlFor="checkout">
+          <span>Date de départ souhaitée</span>
           <input
             type="date"
             name="checkout"
@@ -139,39 +183,58 @@ function RoomSelected(props) {
         Valider
       </button>
       {displaySummary || (
-        <div>
+        <div className="summary">
           <h3>Résumé</h3>
           <span>Vous avez sélectionné une chambre type {name}</span>
           <span>En {selectedMeals} </span>
           <span>
             Du {checkin} au {checkout}
           </span>
+          <span>
+            Prix à payer :{' '}
+            {totalPrice(mealPrice(selectedMeals), roomPrice(name))} €/nuit
+          </span>
           <button type="button" onClick={handleDisplayBooking}>
             Réserver
           </button>
           {displayBooking || (
-            <div>
-              <input
-                type="text"
-                name="user_name"
-                placeholder="Votre nom"
-                value={user_name}
-                onChange={handleUserName}
-              />
-              <input
-                type="number"
-                name="nb_pax"
-                value={nb_pax}
-                onChange={handleNbPax}
-              />
-              <input
-                type="text"
-                name="comment"
-                placeholder="Commentaire (facultatif)"
-                value={comment}
-                onChange={handleComment}
-              />
-              <button type="button" onClick={handleSendBooking}>
+            <div className="booking">
+              <label htmlFor="username">
+                <span>Votre nom</span>
+                <input
+                  type="text"
+                  id="user_name"
+                  name="user_name"
+                  value={user_name}
+                  onChange={handleUserName}
+                />
+              </label>
+              <label htmlFor="nb_pax">
+                <span>Nombre de personnes</span>
+                <input
+                  type="number"
+                  id="nb_pax"
+                  name="nb_pax"
+                  value={nb_pax}
+                  onChange={handleNbPax}
+                />
+              </label>
+              <label htmlFor="comment">
+                <span>Commentaire (facultatif)</span>
+                <input
+                  type="text"
+                  id="comment"
+                  name="comment"
+                  value={comment}
+                  onChange={handleComment}
+                  className="textarea"
+                />
+              </label>
+              <button
+                type="button"
+                onClick={handleSendBooking}
+                className="bookingButton"
+              >
                 Confirmer la réservation
               </button>
             </div>
