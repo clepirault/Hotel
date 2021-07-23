@@ -44,8 +44,8 @@ function Admin() {
   return (
     <div className="admin">
       <Title>Demandes de réservation reçues</Title>
-      {booking.map((element) => (
-        <ul>
+      <ul>
+        {booking.map((element) => (
           <li key={element.id}>
             {element.user_name} : {element.nb_pax} personnes, séjour du{' '}
             {element.checkin} au {element.checkout}, en chambre{' '}
@@ -58,8 +58,8 @@ function Admin() {
               Supprimer
             </button>
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </div>
   );
 }
