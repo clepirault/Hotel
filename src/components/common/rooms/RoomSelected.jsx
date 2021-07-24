@@ -132,8 +132,25 @@ function RoomSelected(props) {
     return price;
   };
 
-  const totalPrice = (meal, room) => {
-    return meal + room;
+  // find total price by days selected
+
+  const selectedDays = (c, d) => {
+    const a = c.split('-').map((x) => +x);
+    const b = d.split('-').map((x) => +x);
+    if (a[1] === b[1]) {
+      return b[2] - a[2];
+    }
+    if (a[1] === 2) {
+      return 28 - a[2] + b[2];
+    }
+    if (a[1] !== 4 && a[1] !== 6 && a[1] !== 9 && a[1] !== 11) {
+      return 31 - a[2] + b[2];
+    }
+    return 30 - a[2] + b[2];
+  };
+
+  const totalPrice = (meal, room, days) => {
+    return (meal + room) * days;
   };
 
   return (
@@ -190,9 +207,15 @@ function RoomSelected(props) {
           <span>
             Du {checkin} au {checkout}
           </span>
+          <span>Soit {selectedDays(checkin, checkout)} nuits</span>
           <span>
-            Prix à payer :{' '}
-            {totalPrice(mealPrice(selectedMeals), roomPrice(name))} €/nuit
+            Prix total à payer :{' '}
+            {totalPrice(
+              mealPrice(selectedMeals),
+              roomPrice(name),
+              selectedDays(checkin, checkout)
+            )}{' '}
+            €
           </span>
           <button type="button" onClick={handleDisplayBooking}>
             Réserver
