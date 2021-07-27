@@ -9,43 +9,45 @@ function Admin() {
   useEffect(() => {
     axios
       .get('http://localhost:8000/booking')
-      .then((res) => res.data)
-      .then((data) => {
+      .then(res => res.data)
+      .then(data => {
         setBooking(data);
       });
   }, []);
-  const handleDeleteBooking = (value) => {
+  const handleDeleteBooking = value => {
     axios
       .delete(`http://localhost:8000/booking/${value}`)
       .then(() => alert.show('Réservation supprimée'));
   };
-  const toRoomName = (value) => {
-    let roomName = '';
-    if (value === 1) {
-      roomName = 'economy';
-    } else if (value === 2) {
-      roomName = 'premium';
-    } else if (value === 3) {
-      roomName = 'suite';
+  const toRoomName = value => {
+    switch (value) {
+      case 1 :
+        return 'economy';
+      case 2 :
+        return 'premium';
+      case 3 :
+        return 'suite';
+      default:
+        return '';
     }
-    return roomName;
   };
-  const toMealName = (value) => {
-    let mealName = '';
-    if (value === 1) {
-      mealName = 'petit déjeuner';
-    } else if (value === 2) {
-      mealName = 'demi pension';
-    } else if (value === 3) {
-      mealName = 'pension complète';
+  const toMealName = value => {
+    switch (value) {
+      case 1 :
+        return 'petit déjeuner';
+      case 2 :
+        return 'demi pension';
+      case 3 :
+        return 'pension complète';
+      default:
+        return '';
     }
-    return mealName;
   };
   return (
     <div className="admin">
       <Title>Demandes de réservation reçues</Title>
       <ul>
-        {booking.map((element) => (
+        {booking.map(element => (
           <li key={element.id}>
             {element.user_name} : {element.nb_pax} personnes, séjour du{' '}
             {element.checkin} au {element.checkout}, en chambre{' '}
@@ -53,8 +55,7 @@ function Admin() {
             commentaire facultatif : {element.comment}
             <button
               type="button"
-              onClick={() => handleDeleteBooking(element.id)}
-            >
+              onClick={() => handleDeleteBooking(element.id)}>
               Supprimer
             </button>
           </li>

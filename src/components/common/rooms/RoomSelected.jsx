@@ -6,6 +6,29 @@ import { Link } from 'react-router-dom';
 import Title from '../title/Title';
 import '../../views/rooms/Rooms.css';
 
+const
+  roomTextToId = text => {
+    switch (text) {
+      case 'Economy':
+        return '1';
+      case 'Premium':
+        return '2';
+      default:
+        return '3';
+    }
+  },
+
+  mealTextToId = text => {
+    switch (text) {
+      case 'petit déjeuner':
+        return '1';
+      case 'demi pension':
+        return '2';
+      default:
+        return '3';
+    }
+  }
+
 function RoomSelected(props) {
   const alert = useAlert();
   /* WE GET AND STORE MEALS */
@@ -13,8 +36,8 @@ function RoomSelected(props) {
   useEffect(() => {
     axios
       .get('http://localhost:8000/meals')
-      .then((res) => res.data)
-      .then((data) => {
+      .then(res => res.data)
+      .then(data => {
         setDisplayMeals(data);
       });
   }, []);
@@ -25,32 +48,26 @@ function RoomSelected(props) {
   useEffect(() => {
     axios
       .get(`http://localhost:8000/rooms/${name}`)
-      .then((res) => res.data)
-      .then((data) => {
+      .then(res => res.data)
+      .then(data => {
         setRoomByName(data[0]);
       });
   }, []);
   /* WE STORE VALUES WE WILL NEED FOR OUR POST REQ */
-  let room_id = ''; // THE ROOM
-  if (name === 'Economy') {
-    room_id = '1';
-  } else if (name === 'Premium') {
-    room_id = '2';
-  } else {
-    room_id = '3';
-  }
+  const room_id = roomTextToId(name);
   const [selectedMeals, setSelectedMeals] = useState('petit déjeuner'); // THE MEAL
   const handleSelectedMeals = (e) => {
     setSelectedMeals(e.target.value);
   };
-  let meal_id = '';
+  const meal_id = mealTextToId(selectedMeals)
+  /*let meal_id = '';
   if (selectedMeals === 'petit déjeuner') {
     meal_id = '1';
-  } else if (name === 'demi pension') {
+  } else if (name === 'demi pension') { <<====== C'est une erreur ici non ? la variable name ?
     meal_id = '2';
   } else {
     meal_id = '3';
-  }
+  }*/
   const [checkin, setCheckin] = useState(''); // THE CHECKIN DATE
   const handleChecking = (e) => {
     setCheckin(e.target.value);
@@ -98,45 +115,39 @@ function RoomSelected(props) {
       .post('http://localhost:8000/booking', newBooking)
       .then(() => alert.show('Merci pour votre réservation'));
   };
-  const convertPrice = (value) => {
-    let text = '';
-    if (value === 0) {
-      text = 'inclus';
-    } else {
-      text = `${value}€/jour`;
+  const convertPrice = value => (value === 0) ? 'inclus' : `${value}€/jour`;
+
+  const mealPrice = value => {
+    switch (value) {
+      case 'petit déjeuner':
+        return 0;
+      case 'demi pension':
+        return 15;
+      case 'pension complète':
+        return 35;
+      default:
+        return '';
     }
-    return text;
   };
 
-  const mealPrice = (value) => {
-    let price = '';
-    if (value === 'petit déjeuner') {
-      price = 0;
-    } else if (value === 'demi pension') {
-      price = 15;
-    } else if (value === 'pension complète') {
-      price = 35;
+  const roomPrice = value => {
+    switch (value) {
+      case 'Economy':
+        return 80;
+      case 'Premium':
+        return 100;
+      case 'Suite':
+        return 200;
+      default:
+        return '';
     }
-    return price;
-  };
-
-  const roomPrice = (value) => {
-    let price = '';
-    if (value === 'Economy') {
-      price = 80;
-    } else if (value === 'Premium') {
-      price = 100;
-    } else if (value === 'Suite') {
-      price = 200;
-    }
-    return price;
   };
 
   // find total price by days selected
 
   const selectedDays = (c, d) => {
-    const a = c.split('-').map((x) => +x);
-    const b = d.split('-').map((x) => +x);
+    const a = c.split('-').map(x => +x);
+    const b = d.split('-').map(x => +x);
     if (a[1] === b[1]) {
       return b[2] - a[2];
     }
@@ -149,9 +160,7 @@ function RoomSelected(props) {
     return 30 - a[2] + b[2];
   };
 
-  const totalPrice = (meal, room, days) => {
-    return (meal + room) * days;
-  };
+  const totalPrice = (meal, room, days) => (meal + room) * days;
 
   return (
     <div className="roomSelectedSection">
