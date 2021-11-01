@@ -1,2 +1,15 @@
-This website was my subject for the last checkpoint of my formation of Developper Web @Wild Code School
--2 days of full work and fun !
+# Hotel
+
+<p>🎓 Wild Code School project</p>
+<p>💻 Responsive</p>
+
+## Goal 🎯 :
+* Apply all the knowledge of the whole training into a last individual project
+
+## Stack 💎 :
+* Frontend : **React**
+* Backend : **Node, MySQL**
+
+## Links 🔗 :
+[Portfolio](https://clemence-pirault.vercel.app/portfolio/hotel)
+
