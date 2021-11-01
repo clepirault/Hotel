@@ -8,7 +8,7 @@
 
 ## Stack 💎 :
 * Frontend : **React**
-* Backend : **Node, MySQL** 👉 [Backend project](https://github.com/clepirault/Hotel-back)
+* Backend : **Node, Express, MySQL** 👉 [Backend project](https://github.com/clepirault/Hotel-back)
 
 ## Links 🔗 :
 * [Backend project](https://github.com/clepirault/Hotel-back)
