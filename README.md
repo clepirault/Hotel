@@ -1,6 +1,6 @@
 # Hotel
 
-<p>💡 This is a project of a hotel website with a booking system</p>
+<p>💡 This is a hotel website with booking system</p>
 <p>🎓 Wild Code School project</p>
 <p>💻 Responsive</p>
 
