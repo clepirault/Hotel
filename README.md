@@ -8,8 +8,8 @@
 
 ## Stack 💎 :
 * Frontend : **React**
-* Backend : **Node, MySQL**
+* Backend : **Node, MySQL** 👉 [Backend project](https://github.com/clepirault/Hotel-back)
 
 ## Links 🔗 :
-[Portfolio](https://clemence-pirault.vercel.app/portfolio/hotel)
-
+* [Backend project](https://github.com/clepirault/Hotel-back)
+* [Portfolio](https://clemence-pirault.vercel.app/portfolio/hotel)
